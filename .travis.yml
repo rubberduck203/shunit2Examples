@@ -3,4 +3,5 @@ addons:
     packages:
     - shunit2
 
+sudo: required
 script: sudo  mkdir /workspace &&  cd src && ./greetingsTest.sh
