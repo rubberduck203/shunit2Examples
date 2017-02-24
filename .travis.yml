@@ -1,8 +1,9 @@
+sudo: required
+
 addons:
   apt:
     packages:
     - shunit2
 
-sudo: required
-before_script: sudo mkdir
+before_script: sudo mkdir /workspace
 script: cd src && ./greetingsTest.sh
