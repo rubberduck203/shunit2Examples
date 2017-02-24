@@ -1,5 +1,5 @@
 #!/bin/bash
 
 function greet() {
-  echo "Hello"
+  echo "Hello World"
 }

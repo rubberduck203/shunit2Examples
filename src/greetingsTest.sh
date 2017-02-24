@@ -3,7 +3,7 @@
 function testCanCallExternalFunction() {
   . greetings.sh
   
-  assertEquals "Hello" `greet`
+  assertEquals "Hello World" "$(greet)"
 }
 
 # load shunit2
