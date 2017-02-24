@@ -1,5 +1,7 @@
 # shUnit2 Examples
 
+[![Build Status](https://travis-ci.org/ckuhn203/shunit2Examples.svg?branch=master)](https://travis-ci.org/ckuhn203/shunit2Examples)
+
 Purpose:
 
  - Me spiking out how to test drive bash scripts
