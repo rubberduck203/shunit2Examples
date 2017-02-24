@@ -15,6 +15,14 @@ Notes:
    * `assertEquals "Hello World" "$(greet)"`
  - If you don't pass a message as the first arg to an assert, it's hard to tell what failed.
 
+### Run Tests
+
+```bash
+cd src
+docker run -it --rm -v $(pwd):/src shunit2
+tests/greetingsTest.sh
+```
+
 ## Building docker image
 
 ```bash
@@ -27,7 +35,7 @@ docker build -t shunit2 .
 Run from the project root and mount the ./src directory so it's available live to the container.
 
 ```bash
-docker run -it --rm -v $(pwd)/src:/src shunit2
+docker run -it --rm -v $(pwd):/src shunit2
 ```
 
 *Tests that write to the file system use the container:/workspace directory as a place to write temporary files to.*

@@ -6,7 +6,15 @@ function testCanCallExternalFunction() {
   assertEquals "Hello World" "$(greet)"
 }
 
-tmpFile="/workspace/greeting"
+oneTimeSetUp() {
+  SHUNIT_TMPDIR="work"
+  mkdir "$SHUNIT_TMPDIR"
+  tmpFile="${SHUNIT_TMPDIR}/greeting"
+}
+
+oneTimeTearDown() {
+  rm -r "$SHUNIT_TMPDIR"
+}
 
 setUp() {
   if [ -e $tmpFile  ]; then
@@ -17,8 +25,9 @@ setUp() {
 testWriteGreetingToFile() {
   . greetings.sh
 
- writeGreeting $tmpFile
- assertTrue "File $tmpFile should exist" "[ -e $tmpFile ]"
+  echo $tmpFile 
+  writeGreeting $tmpFile
+  assertTrue "File $tmpFile should exist" "[ -e $tmpFile ]"
 }
 
 # load shunit2
