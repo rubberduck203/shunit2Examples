@@ -6,4 +6,4 @@ addons:
     - shunit2
 
 before_script: sudo mkdir -m 777 /workspace 
-script: cd src && ./greetingsTest.sh
+script: cd src && tests/greetingsTest.sh
