@@ -4,4 +4,5 @@ addons:
     - shunit2
 
 sudo: required
-script: sudo  mkdir /workspace &&  cd src && ./greetingsTest.sh
+before_script: sudo mkdir
+script: cd src && ./greetingsTest.sh
