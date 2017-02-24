@@ -1,2 +1,6 @@
-install: apt-get install shunit2
+addons:
+  apt:
+    packages:
+    - shunit2
+
 script: src/greetingsTest.sh
