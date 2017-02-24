@@ -17,7 +17,7 @@ setUp() {
 testWriteGreetingToFile() {
   . greetings.sh
 
- #writeGreeting $tmpFile
+ writeGreeting $tmpFile
  assertTrue "File $tmpFile should exist" "[ -e $tmpFile ]"
 }
 
