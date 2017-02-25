@@ -1,18 +1,19 @@
 #!/bin/bash
 
+# Load the code under test
+. greetings.sh
+
+# Tests
 function testCanCallExternalFunction() {
-  . greetings.sh
-  
   assertEquals "Hello World" "$(greet)"
 }
 
 testWriteGreetingToFile() {
-  . greetings.sh
-
   writeGreeting $tmpFile
   assertTrue "File $tmpFile should exist" "[ -e $tmpFile ]"
 }
 
+# Setup & Teardown
 oneTimeSetUp() {
   SHUNIT_TMPDIR="work"
   mkdir "$SHUNIT_TMPDIR"
