@@ -33,7 +33,7 @@ docker build -t shunit2 .
 ## Run Tests
 
 ```bash
-./runTests.sh
+./test.sh
 ```
 
 ## shUnit2 in 10 seconds
