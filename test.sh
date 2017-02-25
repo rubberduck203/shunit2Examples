@@ -7,7 +7,7 @@ echo -e "Copying contents of src to $container:/src\n"
 docker cp src/. $container:/src
 
 echo -e "Running tests...\n"
-docker exec $container tests/greetingsTest.sh
+docker exec $container tests/runAll.sh
 
 echo -e "\n"
 echo -e "Stopping and removing container..."

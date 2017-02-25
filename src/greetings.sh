@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function greet() {
-  echo "Hello World"
+  echo "Hello World!"
 }
 
 function writeGreeting() {

@@ -3,4 +3,4 @@ addons:
     packages:
     - shunit2
 
-script: cd src && tests/greetingsTest.sh
+script: cd src && tests/runAll.sh
