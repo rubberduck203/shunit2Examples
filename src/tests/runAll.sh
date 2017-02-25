@@ -1,4 +1,10 @@
 #!/bin/bash
 set -o errexit
 
-tests/greetingsTest.sh
+function runTest(){
+  echo $1
+  tests/$1
+}
+
+runTest greetingsTest.sh
+runTest mathTests.sh
