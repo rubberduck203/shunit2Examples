@@ -2,26 +2,26 @@
 
 [![Build Status](https://travis-ci.org/ckuhn203/shunit2Examples.svg?branch=master)](https://travis-ci.org/ckuhn203/shunit2Examples)
 
-Purpose:
+## Purpose
 
- - Me spiking out how to test drive bash scripts
- - Use a docker container to run the tests in so we don't inadvertantly `rm -rf /` or anything equally stupid while I'm learning
+Figure out how to test drive bash scripts and have reliable test results (i.e. no flaky integration tests!).
 
-Notes:
+## Notes
+
 *Some of these are likely not directly shunit2 things, but just bash things I don't know yet.*
 
+ - Use a docker container to run the tests in so we don't inadvertantly `rm -rf /` or anything equally stupid while I'm learning
  - Import functions from another file with `. filename` source import
  - To match strings with spaces, you must wrap the function call in quotes.
    * `assertEquals "Hello World" "$(greet)"`
  - If you don't pass a message as the first arg to an assert, it's hard to tell what failed.
-
-### Run Tests
-
-```bash
-cd src
-docker run -it --rm -v $(pwd):/src shunit2
-tests/greetingsTest.sh
-```
+ - Docker copy the source into the container to completely isolate your file system from the container.
+   * The runTests.sh script shows how to copy the source, execute the tests, and clean up the container.
+   * I don't bother with this in the travis ci build, because it's already running in a container there, 
+       but for consistency, we could.
+ - Use the $SHUNIT_TMPDIR variable to set a working directory to write files for integration testing to.
+   * Being realistic, many bash tests are going to be integration tests that are checking for existance of files and other side effects.
+   * The tests in this project use a `work` directory inside the current working directory.
 
 ## Building docker image
 
@@ -30,19 +30,16 @@ tests/greetingsTest.sh
 docker build -t shunit2 .
 ```
 
-## Running docker container
-
-Run from the project root and mount the ./src directory so it's available live to the container.
+## Run Tests
 
 ```bash
-docker run -it --rm -v $(pwd):/src shunit2
+./runTests.sh
 ```
 
-*Tests that write to the file system use the container:/workspace directory as a place to write temporary files to.*
-
-## shUnit2
+## shUnit2 in 10 seconds
 
 Docs are installed in /usr/share/doc/shunit2/
+*Unfortunately, the HomeBrew Formulae doesn't seem to include the docs. The apt-get package does though.*
 
 Bare bones test looks like this.
 
